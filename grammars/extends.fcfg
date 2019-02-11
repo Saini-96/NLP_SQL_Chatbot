@@ -1,11 +1,9 @@
 ## Natural Language Toolkit: sql.fcfg
 ##
-## Deliberately naive string-based grammar for 
-## deriving SQL queries from English
+## Deliberately naive string-based grammar for deriving SQL queries from English
 ## 
-## Author: Salah Alarfaj <sarfaj01@gmail.com> 
+## Author: Rahul Saini <rahulsainipusa@gmail.com> 
 ## URL: <http://nltk.sourceforge.net>
-## License: MIT
 
 % start S
 

@@ -1,0 +1,96 @@
+						"Natural language interfaces to databases"
+
+question answering system contains two components: question analysis and answer retrieval
+Taking the output of the question analysis component as input, the answer retrieval component firstly generates an concrete query expression in a database query language (e.g SQL query). 
+Then the concrete (SQL) query is used to find an answer in a target database
+
+Here in an intermediate process, you might want to use semantic lexicons such as WordNet to map the extracted key terms (e.g. concepts or relations)
+to the database concepts such as table names or columns.
+
+
+Let's start with main.py file which we will execute first, it is the only file which will call another module accordingly.
+
+-> Main.py
+  ---------
+main.py file will basically call chatbot_util.py file and execute & interact with chatbot interface by calling converse function where it got input as pair(where we have defined pattern & responses, each
+pattern is a regular expression matching the user's statement or question. For each such pattern a list of possible responses is given) & reflections like asking user name, 
+asking for help & searching queries in database.
+
+
+
+-> Chatbot_util.py
+  -----------------
+Now chatbot_util.py file has defined reflections(A mapping between first and second person expressions) for Q&A session like "i am" -> "you are".
+Now we have defined a class called Chat where we have created 6 functions & create a fully fledge Database connection by calling mySql_demon.DB function in mySqlp_demon
+file(only contains query part & conditions for displaying one row at a time).
+
+then we have a function called _compile_reflections where sorting of reflection & compiling the regex will be done.
+
+then we have a function called _substitute which will Substitute words in the string, according to the specified reflections but all will be in lowercase
+
+then we have a unction called _wildcards which will replace username according to condition provided & call parser.parse_sent function from parser.py file
+for responding the Sql statment & sql result.
+
+then we have a function called respond which will generate a response to user input by the means of pattern matching & wildcard generation.
+
+then we have a function called get_input which will hold the conversation with chatbot using GUI interface like it will interact with user, how to take input
+from user, when it will disconnect from user interface(by saying "quit").
+
+then we have a function called converse which will provide title to the interface as well as framing of the interface(height, width of the window frame),
+here we can insert some text which will be the display after initiation of chatbot.
+
+
+
+-> mySql_demon.py
+  ----------------
+As already mentioned it will import MySQLdb for connection with Sql server & client & display result acc to query asked. for connecting to SQL databse
+it will ask for configurations like username, password, host & db name so it will call config.py file.
+
+
+
+-> config.py
+  -----------
+It has info realted to db name & user
+db_config = {
+    'user': 'root',
+    'passwd': 'root@123',
+    'host': 'localhost',
+    'db': 'employees',
+    }
+
+
+
+-> parser.py
+  ------------
+this is the file where we will clean our data which is present in the form of english sentence.
+
+in parse_sentence function we will clean our sentence by removing stop words, accepting only supported question string list & loading it by making use of
+grammar(english to sql query generation grammar) what we will learn in next module.
+
+then we have organize_sql_statment function for converting all clauses in lowercase and join them to make a query like "Slect * from Table Where" .
+
+then we have a function senitize_question which will Senitize question from "?", "'s", "'r" clauses.
+
+then we have a function is_question where it will check whether question starts with the supported questions format only, not having more than one question
+
+then we have final section of this file which will call grammars/extends.fcfg where we have provided rules for converting english language to SQL Query.
+
+
+
+-> extends.fcfg
+  --------------
+Here we are setting Rules for converting natural language to SQL Query language
+Rules defined as
+
+Parsing: Token+lemma+POS
+Match+Intermediate Representation (Semantics Analysis)
+Query Generation
+
+
+-> schema.sql
+  ------------
+
+As name suggested it contains structure of the database.
+At the time of database creation we have used this schema.
+
+Note: All alphabets will be converted into lowercase for data preprocessing by natural language processing(basic rule)

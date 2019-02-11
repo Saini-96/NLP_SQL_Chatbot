@@ -1,8 +1,4 @@
 # Natural Language Toolkit: Chatbot Utilities
-#
-# Copyright (C) 2001-2017 NLTK Project
-# Authors: Steven Bird <stevenbird1@gmail.com>
-#          Salah Alarfaj <salah01@gmail.com>
 # URL: <http://nltk.org/>
 
 from __future__ import print_function
@@ -11,7 +7,7 @@ import re
 import random
 
 from six.moves import input
-from tkinter import *
+from Tkinter import *
 from ScrolledText import *
 
 import parser
@@ -102,7 +98,7 @@ class Chat(object):
                     response = str(e)
             
         else:
-            response = "Please Enter your name using the format name {your name}. Example: name John Due"
+            response = "Please Enter your name using the format name {your name}. Example: name Rahul Saini"
         return response
 
     def respond(self, str):
@@ -169,7 +165,7 @@ class Chat(object):
         self.textPad.insert(INSERT, "\nTalk to the program by typing in plain English, using normal upper-")
         self.textPad.insert(INSERT, "\nand lower-case letters and punctuation.  Enter 'quit' when done.\n")
         self.textPad.insert(INSERT, '='*72)
-        self.textPad.insert(INSERT, "\n\nChatbot >Please Enter your name using the format name {your name}. Example: name John Due")
+        self.textPad.insert(INSERT, "\n\nChatbot >Please Enter your name using the format name {your name}. Example: name Rahul Saini")
 
         self.root.mainloop()
 

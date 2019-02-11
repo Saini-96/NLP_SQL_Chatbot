@@ -1,6 +1,6 @@
 db_config = {
-        'user': '##username##',
-        'passwd': '##password##',
-        'host': '##host##',   
-        'db': 'employees',
+    'user': 'root',
+    'passwd': 'root@123',
+    'host': 'localhost',
+    'db': 'employees',
     }

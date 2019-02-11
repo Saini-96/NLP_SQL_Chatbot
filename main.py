@@ -1,7 +1,6 @@
 # Natural Language Toolkit: Form Completion
-#
-# Copyright (C) 2001-2017 NLTK Project
-# Authors: Salah Alarfaj <salah01@gmail.com>
+
+# Authors: Rahul Saini <rahulsainipusa@gmail.com>
 # URL: <http://nltk.org/>
 
 # a translation table used to convert things you say into things the
@@ -17,12 +16,12 @@ from chatbot_util import Chat, reflections
 pairs = (
 
     (r'name (.*)',
-   ('Hello##username##! type your question.. or type help',
+   ('Hello##username##! Please type your question.. or type help',
    'Hey there##username##! type your question.. or type help for options')),
 
   (r'(\bwhat|\bwhich|\bhow|\bwho|\bhow|\bwhat\'s|\bwhich|\'s\bhow\'s|\bwho\'s|\bhow\'s) (.*)',
-   ('Ok ##username##! Let me think ... \n Cool! your sql statment is: \n\n ##sql_statment## \n\n ##sql_result##',
-   'Cool! your sql statment is: \n\n ##sql_statment## \n\n.. hmm here is the result for that: \n\n ##sql_result##')),
+   ('Ok ##username##! Let me have a look into Database... \n Cool! Here is your sql statment : \n\n ##sql_statment## \n\n ##sql_result##',
+   'Cool! Here is your sql statment : \n\n ##sql_statment## \n\n..& here is the result for your asked question : \n\n ##sql_result##')),
 
  (r'help',
   ( "You can ask me questions like:"
